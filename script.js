@@ -24,6 +24,11 @@ window.addEventListener("DOMContentLoaded", () => {
       textSpan.textContent = `${title}: ${description}`;
       li.appendChild(textSpan);
 
+      const editButton = document.createElement("button");
+      editButton.innerHTML = '<i class="fas fa-edit"></i>';
+      editButton.classList.add("custom-edit-btn");
+      li.appendChild(editButton);
+
       const crossOffButton = document.createElement("button");
       crossOffButton.innerHTML = '<i class="fas fa-check"></i>';
       crossOffButton.classList.add("custom-cross-off-btn");
@@ -47,6 +52,20 @@ window.addEventListener("DOMContentLoaded", () => {
           todoList.splice(index, 1);
         }
         li.remove();
+      });
+
+      editButton.addEventListener("click", () => {
+        const newTitle = prompt("Enter the new title:", newItem.title);
+        const newDescription = prompt(
+          "Enter the new description:",
+          newItem.description
+        );
+
+        if (newTitle && newDescription) {
+          newItem.title = newTitle;
+          newItem.description = newDescription;
+          textSpan.textContent = `${newTitle}: ${newDescription}`;
+        }
       });
 
       titleInput.value = "";
