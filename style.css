@@ -1,0 +1,10 @@
+body {
+    background: linear-gradient(to right, orange, yellow);
+    color: black;
+}
+
+button {
+    border-radius: 10pt;
+    background-color: rgb(136, 255, 120);
+    border-color: rgb(54, 255, 242);
+}
