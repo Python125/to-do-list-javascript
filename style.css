@@ -27,6 +27,11 @@ body {
 }
 
 .custom-edit-btn {
+  color: rgb(112, 142, 222);
+  border-radius: 10pt;
+}
+
+.custom-save-btn {
   color: blue;
   border-radius: 10pt;
 }
