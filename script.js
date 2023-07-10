@@ -18,26 +18,6 @@ window.addEventListener("DOMContentLoaded", () => {
       };
 
       todoList.push(newItem);
-      const newCheckBtn = document.createElement("div");
-      newCheckBtn.setAttribute("class", "task_check_btn");
-      onTaskComplete(newCheckBtn);
-
-      function onTaskComplete(btns) {
-        btns.addEventListener("click", function (element) {
-          let parents = element.target.parentElement;
-          parents.classList.add("task-completed");
-
-          setTimeout(() => {
-            parents.remove();
-          }, 400);
-
-          if (tasksList.childNodes.length === 1) {
-            setTimeout(() => {
-              container.classList.add("task_list_empty");
-            }, 200);
-          }
-        });
-      }
 
       const li = document.createElement("li");
       const textSpan = document.createElement("span");
