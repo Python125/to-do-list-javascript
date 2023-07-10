@@ -4,35 +4,37 @@ body {
   text-align: center;
 }
 
-.button-wrapper {
-  margin-top: 10px;
+.container {
+  max-width: 500px;
+  margin: auto;
 }
 
-#add-btn {
-  border-radius: 10pt;
+input[type="text"] {
+  padding: 5px;
 }
 
-.completed {
+button {
+  padding: 5px;
+  background-color: rgb(109, 203, 234);
+  color: black;
+  border-radius: 5px;
+  border-color: rgb(255, 218, 149);
+  cursor: pointer;
+}
+
+li button {
+  cursor: pointer;
+  margin-left: 15px;
+  background-color: rgb(97, 225, 97);
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.todo-item.completed span {
   text-decoration: line-through;
-  color: gray;
-}
-
-.custom-cross-off-btn {
-  color: green;
-  border-radius: 10pt;
-}
-
-.custom-delete-btn {
-  color: red;
-  border-radius: 10pt;
-}
-
-.custom-edit-btn {
-  color: rgb(112, 142, 222);
-  border-radius: 10pt;
-}
-
-.custom-save-btn {
-  color: blue;
-  border-radius: 10pt;
 }
