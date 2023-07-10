@@ -18,6 +18,26 @@ window.addEventListener("DOMContentLoaded", () => {
       };
 
       todoList.push(newItem);
+      const newCheckBtn = document.createElement("div");
+      newCheckBtn.setAttribute("class", "task_check_btn");
+      onTaskComplete(newCheckBtn);
+
+      function onTaskComplete(btns) {
+        btns.addEventListener("click", function (element) {
+          let parents = element.target.parentElement;
+          parents.classList.add("task-completed");
+
+          setTimeout(() => {
+            parents.remove();
+          }, 400);
+
+          if (tasksList.childNodes.length === 1) {
+            setTimeout(() => {
+              container.classList.add("task_list_empty");
+            }, 200);
+          }
+        });
+      }
 
       const li = document.createElement("li");
       const textSpan = document.createElement("span");
@@ -29,22 +49,12 @@ window.addEventListener("DOMContentLoaded", () => {
       editButton.classList.add("custom-edit-btn");
       li.appendChild(editButton);
 
-      const crossOffButton = document.createElement("button");
-      crossOffButton.innerHTML = '<i class="fas fa-check"></i>';
-      crossOffButton.classList.add("custom-cross-off-btn");
-      li.appendChild(crossOffButton);
-
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
       deleteButton.classList.add("custom-delete-btn");
       li.appendChild(deleteButton);
 
       todoListElement.appendChild(li);
-
-      crossOffButton.addEventListener("click", () => {
-        textSpan.classList.add("completed");
-        newItem.completed = true;
-      });
 
       deleteButton.addEventListener("click", () => {
         const index = todoList.indexOf(newItem);
