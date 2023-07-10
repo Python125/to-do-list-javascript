@@ -55,17 +55,37 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       editButton.addEventListener("click", () => {
-        const newTitle = prompt("Enter the new title:", newItem.title);
-        const newDescription = prompt(
-          "Enter the new description:",
-          newItem.description
-        );
+        const newTitleInput = document.createElement("input");
+        newTitleInput.type = "text";
+        newTitleInput.value = newItem.title;
 
-        if (newTitle && newDescription) {
-          newItem.title = newTitle;
-          newItem.description = newDescription;
-          textSpan.textContent = `${newTitle}: ${newDescription}`;
-        }
+        const newDescriptionInput = document.createElement("input");
+        newDescriptionInput.type = "text";
+        newDescriptionInput.value = newItem.description;
+
+        const saveButton = document.createElement("button");
+        saveButton.innerHTML = '<i class="fas fa-save"></i>';
+        saveButton.classList.add("custom-save-btn");
+        li.appendChild(saveButton);
+
+        li.replaceChild(newTitleInput, textSpan);
+        li.replaceChild(newDescriptionInput, editButton);
+        li.appendChild(saveButton);
+
+        saveButton.addEventListener("click", () => {
+          const newTitle = newTitleInput.value;
+          const newDescription = newDescriptionInput.value;
+
+          if (newTitle && newDescription) {
+            newItem.title = newTitle;
+            newItem.description = newDescription;
+            textSpan.textContent = `${newTitle}: ${newDescription}`;
+          }
+
+          li.replaceChild(textSpan, newTitleInput);
+          li.replaceChild(editButton, newDescriptionInput);
+          li.removeChild(saveButton);
+        });
       });
 
       titleInput.value = "";
