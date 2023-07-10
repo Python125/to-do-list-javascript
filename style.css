@@ -1,6 +1,7 @@
 body {
   background: linear-gradient(to right, orange, yellow);
   color: black;
+  text-align: center;
 }
 
 .button-wrapper {
