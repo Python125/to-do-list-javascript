@@ -6,7 +6,7 @@ body {
 }
 h1 {
   font-size: 35pt;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Courier New";
 }
 
 header,
@@ -22,13 +22,14 @@ form button {
   background: white;
 }
 form button {
-  color: rgb(255, 201, 100);
-  background-color: rgb(255, 255, 95);
+  color: rgb(100, 196, 255);
+  background-color: rgb(95, 255, 100);
   cursor: pointer;
   transition: all 0.1s ease;
 }
 form button:hover {
-  color: white;
+  color: rgb(95, 255, 100);
+  background-color: rgb(100, 196, 255);
 }
 .todo-container {
   display: flex;
@@ -100,27 +101,32 @@ select {
 
 /* Custom Select */
 .select {
-  margin: 10pt;
+  margin: 20pt;
   position: relative;
-  overflow: hidden;
 }
+
 select {
-  color: rgb(58, 183, 225);
+  color: black;
   font-family: "Georgia";
   cursor: pointer;
-  width: 12rem;
+  width: 100pt;
+  height: 30pt;
+  border-radius: 5px;
 }
+
 /* Arrow */
 .select::after {
   content: "\25BC";
   position: absolute;
-  top: 0;
+  background-color: aquamarine;
+  padding: 8pt;
   right: 0;
-  padding: 1rem;
-  background: #ff6f47;
+  bottom: 1;
+  left: 1;
+  border-radius: 5px;
   cursor: pointer;
   pointer-events: none;
 }
 .select:hover::after {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
