@@ -1,7 +1,27 @@
+:root {
+  --dark: #374151;
+  --darker: #1f2937;
+  --darkest: #111827;
+  --grey: #6b7280;
+  --pink: #ec4899;
+  --purple: #8b5cf6;
+  --light: #eee;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Fira sans", sans-serif;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #fff;
+  background-color: var(--dark);
   background: linear-gradient(to right, lightgreen, lightblue);
   text-align: center;
-  color: black;
   font-family: "Arial";
 }
 
@@ -10,30 +30,134 @@ h1 {
   font-family: "Courier New";
 }
 
-header,
-form {
+header {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+#new-task-form {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-form input,
-form button {
-  padding: 5px;
-  font-size: 25px;
-  background: white;
+input,
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
 }
 
-form button {
-  color: rgb(100, 196, 255);
-  background-color: rgb(95, 255, 100);
+#new-task-input {
+  flex: 1 1 0%;
+  background-color: var(--darker);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  color: var(--light);
+  font-size: 1.25rem;
+}
+
+#new-task-input::placeholder {
+  color: var(--grey);
+}
+
+#new-task-submit {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: rgb(255, 255, 93);
+  color: orange;
   cursor: pointer;
-  transition: all 0.1s ease;
+  border-radius: 10px;
 }
 
-form button:hover {
-  color: rgb(95, 255, 100);
-  background-color: rgb(100, 196, 255);
+#new-task-submit:hover {
+  opacity: 0.8;
+}
+
+#new-task-submit:active {
+  opacity: 0.6;
+}
+
+main {
+  flex: 1 1 0%;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.task-list {
+  padding: 1rem;
+}
+
+.task-list h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+#tasks .task {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--darkest);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.task .content {
+  flex: 1 1 0%;
+}
+
+.task .content .text {
+  color: var(--light);
+  font-size: 1.125rem;
+  width: 100%;
+  display: block;
+  transition: 0.4s;
+}
+
+.task .content .text:not(:read-only) {
+  color: var(--pink);
+}
+
+.task .actions {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.task .actions button {
+  cursor: pointer;
+  margin: 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+.task .actions button:hover {
+  opacity: 0.8;
+}
+
+.task .actions button:active {
+  opacity: 0.6;
+}
+
+.task .actions .edit {
+  color: white;
+}
+
+.task .actions .delete {
+  color: crimson;
 }
 
 .todo-container {
@@ -48,7 +172,7 @@ form button:hover {
 }
 
 .todo {
-  margin: 10px;
+  margin: 10pt;
   background: white;
   font-size: 15pt;
   color: black;
@@ -56,6 +180,17 @@ form button:hover {
   justify-content: space-between;
   align-items: center;
   transition: all 1s ease;
+  box-sizing: border-box;
+}
+
+input.edit-input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background-color: transparent;
 }
 
 .filter-todo {
@@ -68,7 +203,8 @@ form button:hover {
 
 .trash-btn,
 .complete-btn,
-.edit-btn {
+.edit-btn,
+.save-btn {
   background: rgb(255, 75, 75);
   color: white;
   border: none;
@@ -83,6 +219,10 @@ form button:hover {
 
 .edit-btn {
   background-color: rgb(85, 85, 255);
+}
+
+.save-btn {
+  background-color: blue;
 }
 
 .todo-item {
@@ -104,7 +244,7 @@ form button:hover {
   opacity: 0.4;
 }
 
-/*CUSTOM SELECTOR */
+/* Custom Selector */
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
