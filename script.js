@@ -75,6 +75,12 @@ function deleteTodo(e) {
   }
 }
 
+function editToDo(e) {
+  const item = e.target;
+
+  if (item.classList[0] === "edit-btn") {}
+}
+
 function filterTodo(e) {
   const todos = todoList.childNodes;
   todos.forEach(function (todo) {
