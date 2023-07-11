@@ -122,6 +122,7 @@ select {
 select {
   color: black;
   font-family: "Georgia";
+  font-size: 15pt;
   cursor: pointer;
   width: 150pt;
   height: 30pt;
