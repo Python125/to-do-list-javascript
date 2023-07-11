@@ -32,6 +32,12 @@ function addTodo(e) {
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
 
+  //Create Edit Button
+  const editButton = document.createElement("button");
+  editButton.innerHTML = `<i class="fa fa-edit"></i>`;
+  editButton.classList.add("edit-btn");
+  todoDiv.appendChild(editButton);
+
   //Create Completed Button
   const completedButton = document.createElement("button");
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
@@ -133,6 +139,12 @@ function getTodos() {
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     todoInput.value = "";
+
+    //Create Edit Button
+    const editButton = document.createElement("button");
+    editButton.innerHTML = `<i class="fa fa-edit"></i>`;
+    editButton.classList.add("edit-btn");
+    todoDiv.appendChild(editButton);
 
     //Create Completed Button
     const completedButton = document.createElement("button");
