@@ -1,12 +1,12 @@
 body {
-  background: linear-gradient(to right, orange, yellow);
+  background: linear-gradient(to right, lightgreen, lightblue);
   text-align: center;
   color: black;
-  font-family: "Poppins", sans-serif;
-  min-height: 90vh;
+  font-family: "Arial";
 }
 h1 {
-  font-size: 30pt;
+  font-size: 35pt;
+  font-family: "Courier New", Courier, monospace;
 }
 
 header,
@@ -18,17 +18,16 @@ form {
 form input,
 form button {
   padding: 5px;
-  font-size: 15px;
+  font-size: 25px;
   background: white;
 }
 form button {
-  color: blue;
-  background-color: #84ffb7;
+  color: rgb(255, 201, 100);
+  background-color: rgb(255, 255, 95);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 form button:hover {
-  background: #47ff94;
   color: white;
 }
 .todo-container {
@@ -38,14 +37,14 @@ form button:hover {
 }
 
 .todo-list {
-  min-width: 35%;
+  min-width: 30%;
   list-style: none;
 }
 
 .todo {
   margin: 10px;
   background: white;
-  font-size: 12pt;
+  font-size: 15pt;
   color: black;
   display: flex;
   justify-content: space-between;
@@ -53,7 +52,7 @@ form button:hover {
   transition: all 1s ease;
 }
 .filter-todo {
-  padding: 1rem;
+  padding: 5pt;
 }
 .todo li {
   flex: 1;
@@ -61,18 +60,18 @@ form button:hover {
 
 .trash-btn,
 .complete-btn {
-  background: #ff6f47;
+  background: rgb(255, 75, 75);
   color: white;
   border: none;
-  padding: 1rem;
+  padding: 10pt;
   cursor: pointer;
-  font-size: 1rem;
 }
 .complete-btn {
-  background: rgb(11, 212, 162);
+  background: rgb(105, 253, 105);
+  color: black;
 }
 .todo-item {
-  padding: 0rem 0.5rem;
+  padding: 5px;
 }
 
 .fa-trash,
@@ -81,13 +80,13 @@ form button:hover {
 }
 
 .fall {
-  transform: translateY(10rem) rotateZ(20deg);
+  transform: translateY(20rem) rotateZ(300deg);
   opacity: 0;
 }
 
 .completed {
   text-decoration: line-through;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 /*CUSTOM SELECTOR */
@@ -96,21 +95,18 @@ select {
   -moz-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  outline: 0;
   box-shadow: none;
-  border: 0 !important;
-  background-image: none;
 }
 
 /* Custom Select */
 .select {
-  margin: 1rem;
+  margin: 10pt;
   position: relative;
   overflow: hidden;
 }
 select {
-  color: #ff6f47;
-  font-family: "Poppins", sans-serif;
+  color: rgb(58, 183, 225);
+  font-family: "Georgia";
   cursor: pointer;
   width: 12rem;
 }
