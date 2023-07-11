@@ -1,25 +1,7 @@
-:root {
-  --dark: #374151;
-  --darker: #1f2937;
-  --darkest: #111827;
-  --grey: #6b7280;
-  --pink: #ec4899;
-  --purple: #8b5cf6;
-  --light: #eee;
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Fira sans", sans-serif;
-}
-
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: #fff;
-  background-color: var(--dark);
   background: linear-gradient(to right, lightgreen, lightblue);
   text-align: center;
   font-family: "Arial";
@@ -37,13 +19,6 @@ header {
   margin: 0 auto;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--grey);
-  margin-bottom: 1rem;
-}
-
 #new-task-form {
   display: flex;
 }
@@ -57,130 +32,75 @@ button {
 }
 
 #new-task-input {
-  flex: 1 1 0%;
-  background-color: var(--darker);
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-right: 1rem;
-  color: var(--light);
-  font-size: 1.25rem;
-}
-
-#new-task-input::placeholder {
-  color: var(--grey);
+  flex: 1%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: black;
+  font-size: 15pt;
 }
 
 #new-task-submit {
-  font-size: 1.25rem;
-  font-weight: 700;
-  background-color: rgb(255, 255, 93);
-  color: orange;
+  color: black;
+  font-size: 15pt;
+  font-weight: bold;
+  color: black;
   cursor: pointer;
-  border-radius: 10px;
-}
-
-#new-task-submit:hover {
-  opacity: 0.8;
-}
-
-#new-task-submit:active {
-  opacity: 0.6;
 }
 
 main {
-  flex: 1 1 0%;
-  max-width: 800px;
+  flex: 1%;
+  max-width: 750px;
   width: 100%;
   margin: 0 auto;
 }
 
 .task-list {
-  padding: 1rem;
-}
-
-.task-list h2 {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--grey);
-  margin-bottom: 1rem;
+  padding: 10px;
 }
 
 #tasks .task {
   display: flex;
   justify-content: space-between;
-  background-color: var(--darkest);
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-
-.task .content {
-  flex: 1 1 0%;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .task .content .text {
-  color: var(--light);
-  font-size: 1.125rem;
+  color: black;
+  font-size: 18pt;
   width: 100%;
   display: block;
-  transition: 0.4s;
-}
-
-.task .content .text:not(:read-only) {
-  color: var(--pink);
 }
 
 .task .actions {
   display: flex;
-  margin: 0 -0.5rem;
+  margin: 5px;
 }
 
 .task .actions button {
   cursor: pointer;
-  margin: 0 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 0.4s;
+  font-size: 15pt;
+  font-weight: bold;
 }
 
 .task .actions button:hover {
-  opacity: 0.8;
+  opacity: 0.4;
 }
 
 .task .actions button:active {
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .task .actions .edit {
-  color: white;
+  color: blue;
 }
 
 .task .actions .delete {
   color: crimson;
-}
-
-.todo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.todo-list {
-  min-width: 30%;
-  list-style: none;
-}
-
-.todo {
-  margin: 10pt;
-  background: white;
-  font-size: 15pt;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 1s ease;
-  box-sizing: border-box;
 }
 
 input.edit-input {
@@ -193,96 +113,7 @@ input.edit-input {
   background-color: transparent;
 }
 
-.filter-todo {
-  padding: 5pt;
-}
-
-.todo li {
-  flex: 1;
-}
-
-.trash-btn,
-.complete-btn,
-.edit-btn,
-.save-btn {
-  background: rgb(255, 75, 75);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.complete-btn {
-  background: rgb(105, 253, 105);
-  color: black;
-}
-
-.edit-btn {
-  background-color: rgb(85, 85, 255);
-}
-
-.save-btn {
-  background-color: blue;
-}
-
-.todo-item {
-  padding: 5px;
-}
-
-.fa-trash,
-.fa-check {
-  pointer-events: none;
-}
-
-.fall {
-  transform: translateY(20rem) rotateZ(300deg);
-  opacity: 0;
-}
-
 .completed {
   text-decoration: line-through;
   opacity: 0.4;
-}
-
-/* Custom Selector */
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  box-shadow: none;
-}
-
-/* Custom Select */
-.select {
-  margin: 20pt;
-  position: relative;
-}
-
-select {
-  color: black;
-  font-family: "Georgia";
-  font-size: 15pt;
-  cursor: pointer;
-  width: 150pt;
-  height: 30pt;
-  border-radius: 5px;
-}
-
-/* Arrow */
-.select::after {
-  content: "\25BC";
-  position: absolute;
-  background-color: aquamarine;
-  padding: 8pt;
-  right: 0;
-  bottom: 1;
-  left: 1;
-  border-radius: 5px;
-  cursor: pointer;
-  pointer-events: none;
-}
-
-.select:hover::after {
-  transform: scale(1.2);
 }
