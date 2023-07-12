@@ -1,10 +1,10 @@
 /* Select all the necessary Elements  */
-var input = document.querySelector(".todo_input");
-var MainTodoContainer = document.getElementById("todos");
-var addingButton = document.querySelector(".add-item");
-var deleteAllBtn = document.querySelector(".deleteBtn");
-var completedButton = document.querySelector(".completed");
-var removeButton = document.querySelector(".trash");
+const input = document.querySelector(".todo_input");
+const MainTodoContainer = document.getElementById("todos");
+const addingButton = document.querySelector(".add-item");
+const deleteAllBtn = document.querySelector(".deleteBtn");
+const completedButton = document.querySelector(".completed");
+const removeButton = document.querySelector(".trash");
 
 addingButton.addEventListener("click", function (e) {
   /* stoping button behaviour */
@@ -13,31 +13,31 @@ addingButton.addEventListener("click", function (e) {
   /* Create all the elements */
   if (input.value.trim()) {
     /* UL Tag */
-    var ulTag = document.createElement("ul");
+    let ulTag = document.createElement("ul");
     ulTag.classList.add("todo-list-container");
     /* Todo list div */
-    var todoList = document.createElement("div");
+    let todoList = document.createElement("div");
     todoList.classList.add("todo-list");
     /* LI Tag */
-    var liTag = document.createElement("li");
+    let liTag = document.createElement("li");
     liTag.innerText = input.value;
     liTag.classList.add("todo-item");
     /* Button Div */
-    var buttonDiv = document.createElement("div");
+    let buttonDiv = document.createElement("div");
     buttonDiv.classList.add("button");
     /* completed button element1 */
-    var completeButton = document.createElement("button");
+    let completeButton = document.createElement("button");
     completeButton.classList.add("completed");
     completeButton.innerHTML = '<i class="fas fa-check"></i>';
     /* Edit Button */
-    var editBtn = document.createElement("button");
+    let editBtn = document.createElement("button");
     editBtn.innerHTML = '<i class="far fa-edit"></i>';
     editBtn.classList.add("editBtn");
     editBtn.onclick = function () {
       editWorking(liTag);
     };
     /* trash button element2 */
-    var trashButton = document.createElement("button");
+    let trashButton = document.createElement("button");
     trashButton.classList.add("trash");
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
 
@@ -57,17 +57,17 @@ addingButton.addEventListener("click", function (e) {
     input.value = "";
     /* complete and trash button working */
     todoList.addEventListener("click", function (e) {
-      var items = e.target;
+      let items = e.target;
       if (items.classList[0] === "completed") {
-        var todo = items.parentElement;
-        var todo2 = todo.parentElement;
+        let todo = items.parentElement;
+        let todo2 = todo.parentElement;
         todo2.classList.add("line_through");
       } else if (items.classList[0] === "trash") {
-        var todo = items.parentElement;
-        var todo2 = todo.parentElement;
+        let todo = items.parentElement;
+        let todo2 = todo.parentElement;
         todo2.classList.add("fall");
         todo2.addEventListener("transitionend", function () {
-          var todo3 = todo2.parentElement;
+          let todo3 = todo2.parentElement;
           todo3.remove();
         });
       }
@@ -78,12 +78,12 @@ addingButton.addEventListener("click", function (e) {
 });
 
 function editWorking(e) {
-  var editValue = prompt("edit the select item", e.firstChild.nodeValue);
+  let editValue = prompt("edit the select item", e.firstChild.nodeValue);
   e.firstChild.nodeValue = editValue;
 }
 function deleteAllElements() {
-  var gettingUlTag = document.querySelectorAll(".todo-list-container");
-  for (var i = 0; i < gettingUlTag.length; i++) {
+  let gettingUlTag = document.querySelectorAll(".todo-list-container");
+  for (let i = 0; i < gettingUlTag.length; i++) {
     gettingUlTag[i].remove();
   }
   input.value = "";
