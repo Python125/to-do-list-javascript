@@ -1,147 +1,32 @@
 body {
-  background: linear-gradient(to right, lightgreen, lightblue);
-  text-align: center;
-  color: black;
-  font-family: "Arial";
-}
-
-h1 {
-  font-size: 35pt;
-  font-family: "Courier New";
-}
-
-header,
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-form input,
-form button {
-  padding: 5px;
-  font-size: 25px;
-  background: white;
-}
-
-form button {
-  color: rgb(100, 196, 255);
-  background-color: rgb(95, 255, 100);
-  cursor: pointer;
-  transition: all 0.1s ease;
-}
-
-form button:hover {
-  color: rgb(95, 255, 100);
-  background-color: rgb(100, 196, 255);
-}
-
-.todo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.todo-list {
-  min-width: 30%;
-  list-style: none;
-}
-
-.todo {
-  margin: 10px;
-  background: white;
-  font-size: 15pt;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 1s ease;
-}
-
-.filter-todo {
-  padding: 5pt;
-}
-
-.todo li {
-  flex: 1;
-}
-
-.trash-btn,
-.complete-btn,
-.edit-btn {
-  background: rgb(255, 75, 75);
-  color: white;
-  border: none;
-  padding: 10pt;
-  cursor: pointer;
-}
-
-.complete-btn {
-  background: rgb(105, 253, 105);
+  background: linear-gradient(to right, orange, yellow);
   color: black;
 }
 
-.edit-btn {
-  background-color: rgb(85, 85, 255);
+.button-wrapper {
+  margin-top: 10px;
 }
 
-.todo-item {
-  padding: 5px;
-}
-
-.fa-trash,
-.fa-check {
-  pointer-events: none;
-}
-
-.fall {
-  transform: translateY(20rem) rotateZ(300deg);
-  opacity: 0;
+#add-btn {
+  border-radius: 10pt;
 }
 
 .completed {
   text-decoration: line-through;
-  opacity: 0.4;
+  color: gray;
 }
 
-/*CUSTOM SELECTOR */
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  box-shadow: none;
+.custom-cross-off-btn {
+  color: green;
+  border-radius: 10pt;
 }
 
-/* Custom Select */
-.select {
-  margin: 20pt;
-  position: relative;
+.custom-delete-btn {
+  color: red;
+  border-radius: 10pt;
 }
 
-select {
-  color: black;
-  font-family: "Georgia";
-  cursor: pointer;
-  width: 150pt;
-  height: 30pt;
-  border-radius: 5px;
-}
-
-/* Arrow */
-.select::after {
-  content: "\25BC";
-  position: absolute;
-  background-color: aquamarine;
-  padding: 8pt;
-  right: 0;
-  bottom: 1;
-  left: 1;
-  border-radius: 5px;
-  cursor: pointer;
-  pointer-events: none;
-}
-
-.select:hover::after {
-  transform: scale(1.2);
+.custom-edit-btn {
+  color: blue;
+  border-radius: 10pt;
 }
