@@ -120,7 +120,6 @@ h2 {
 .line_through {
   text-decoration: line-through;
   opacity: 0.5;
-  transition: 0.2s;
 }
 
 @media screen and (max-width: 600px) {

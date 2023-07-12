@@ -7,7 +7,7 @@ const completedButton = document.querySelector(".completed");
 const removeButton = document.querySelector(".trash");
 
 addingButton.addEventListener("click", function (e) {
-  /* stoping button behaviour */
+  /* stoping button behavior */
   e.preventDefault();
 
   /* Create all the elements */
@@ -61,7 +61,7 @@ addingButton.addEventListener("click", function (e) {
       if (items.classList[0] === "completed") {
         let todo = items.parentElement;
         let todo2 = todo.parentElement;
-        todo2.classList.add("line_through");
+        todo2.classList.toggle("line_through");
       } else if (items.classList[0] === "trash") {
         let todo = items.parentElement;
         let todo2 = todo.parentElement;
