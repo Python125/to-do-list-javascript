@@ -42,11 +42,12 @@ button {
 }
 
 #new-task-submit {
-  color: black;
+  background-color: rgb(255, 255, 152);
   font-size: 15pt;
   font-weight: bold;
   color: black;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 main {
