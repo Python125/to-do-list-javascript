@@ -1,75 +1,90 @@
-window.addEventListener("DOMContentLoaded", () => {
-  const todoList = [];
+/* Select all the necessary Elements  */
+var input = document.querySelector(".todo_input");
+var MainTodoContainer = document.getElementById("todos");
+var addingButton = document.querySelector(".add-item");
+var deleteAllBtn = document.querySelector(".deleteBtn");
+var completedButton = document.querySelector(".completed");
+var removeButton = document.querySelector(".trash");
 
-  const todoListElement = document.getElementById("todo-list");
-  const titleInput = document.getElementById("title");
-  const descriptionInput = document.getElementById("description");
-  const addButton = document.getElementById("add-btn");
+addingButton.addEventListener("click", function (e) {
+  /* stoping button behaviour */
+  e.preventDefault();
 
-  addButton.addEventListener("click", () => {
-    const title = titleInput.value;
-    const description = descriptionInput.value;
+  /* Create all the elements */
+  if (input.value.trim()) {
+    /* UL Tag */
+    var ulTag = document.createElement("ul");
+    ulTag.classList.add("todo-list-container");
+    /* Todo list div */
+    var todoList = document.createElement("div");
+    todoList.classList.add("todo-list");
+    /* LI Tag */
+    var liTag = document.createElement("li");
+    liTag.innerText = input.value;
+    liTag.classList.add("todo-item");
+    /* Button Div */
+    var buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("button");
+    /* completed button element1 */
+    var completeButton = document.createElement("button");
+    completeButton.classList.add("completed");
+    completeButton.innerHTML = '<i class="fas fa-check"></i>';
+    /* Edit Button */
+    var editBtn = document.createElement("button");
+    editBtn.innerHTML = '<i class="far fa-edit"></i>';
+    editBtn.classList.add("editBtn");
+    editBtn.onclick = function () {
+      editWorking(liTag);
+    };
+    /* trash button element2 */
+    var trashButton = document.createElement("button");
+    trashButton.classList.add("trash");
+    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
 
-    if (title && description) {
-      const newItem = {
-        title: title,
-        description: description,
-        completed: false,
-      };
+    /* Appending Elements into each other */
+    ulTag.appendChild(todoList);
+    todoList.appendChild(liTag);
+    todoList.appendChild(buttonDiv);
+    buttonDiv.appendChild(completeButton);
+    buttonDiv.appendChild(editBtn);
+    buttonDiv.appendChild(trashButton);
 
-      todoList.push(newItem);
+    /* if input is empty then don't display empty list in DOM */
+    MainTodoContainer.appendChild(ulTag);
 
-      const li = document.createElement("li");
-      const textSpan = document.createElement("span");
-      textSpan.textContent = `${title}: ${description}`;
-      li.appendChild(textSpan);
-
-      const editButton = document.createElement("button");
-      editButton.innerHTML = '<i class="fas fa-edit"></i>';
-      editButton.classList.add("custom-edit-btn");
-      li.appendChild(editButton);
-
-      const crossOffButton = document.createElement("button");
-      crossOffButton.innerHTML = '<i class="fas fa-check"></i>';
-      crossOffButton.classList.add("custom-cross-off-btn");
-      li.appendChild(crossOffButton);
-
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-      deleteButton.classList.add("custom-delete-btn");
-      li.appendChild(deleteButton);
-
-      todoListElement.appendChild(li);
-
-      crossOffButton.addEventListener("click", () => {
-        textSpan.classList.add("completed");
-        newItem.completed = true;
-      });
-
-      deleteButton.addEventListener("click", () => {
-        const index = todoList.indexOf(newItem);
-        if (index > -1) {
-          todoList.splice(index, 1);
-        }
-        li.remove();
-      });
-
-      editButton.addEventListener("click", () => {
-        const newTitle = prompt("Enter the new title:", newItem.title);
-        const newDescription = prompt(
-          "Enter the new description:",
-          newItem.description
-        );
-
-        if (newTitle && newDescription) {
-          newItem.title = newTitle;
-          newItem.description = newDescription;
-          textSpan.textContent = `${newTitle}: ${newDescription}`;
-        }
-      });
-
-      titleInput.value = "";
-      descriptionInput.value = "";
-    }
-  });
+    /* sessionStorage */
+    /* when the add button click clear the input value */
+    input.value = "";
+    /* complete and trash button working */
+    todoList.addEventListener("click", function (e) {
+      var items = e.target;
+      if (items.classList[0] === "completed") {
+        var todo = items.parentElement;
+        var todo2 = todo.parentElement;
+        todo2.classList.add("line_through");
+      } else if (items.classList[0] === "trash") {
+        var todo = items.parentElement;
+        var todo2 = todo.parentElement;
+        todo2.classList.add("fall");
+        todo2.addEventListener("transitionend", function () {
+          var todo3 = todo2.parentElement;
+          todo3.remove();
+        });
+      }
+    });
+  } else if (input.value === "") {
+    alert("please fill the input field");
+  }
 });
+
+function editWorking(e) {
+  var editValue = prompt("edit the select item", e.firstChild.nodeValue);
+  e.firstChild.nodeValue = editValue;
+}
+function deleteAllElements() {
+  var gettingUlTag = document.querySelectorAll(".todo-list-container");
+  for (var i = 0; i < gettingUlTag.length; i++) {
+    gettingUlTag[i].remove();
+  }
+  input.value = "";
+}

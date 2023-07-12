@@ -1,32 +1,134 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-  background: linear-gradient(to right, orange, yellow);
+  background: linear-gradient(
+    139deg,
+    rgba(193, 62, 62, 1) 0%,
+    rgba(230, 179, 50, 1) 100%
+  );
+  background-attachment: fixed;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 30pt;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: 18pt;
+}
+
+#todos {
+  width: 575px;
+  margin: 0 auto;
+}
+
+#todos > .todo-input-container {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+#todos > .todo-input-container > .todo_input {
+  width: 100%;
+  height: 40px;
+  padding: 15px;
+  font-size: 12pt;
+  outline: none;
+  border: none;
+}
+
+#todos > .todo-input-container > .add-item {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgb(236, 44, 44);
+  line-height: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+#todos > .todo-input-container > .add-item:nth-child(2) {
+  right: 40px;
+  background-color: rgb(233, 153, 61);
+}
+
+#todos > .todo-list-container {
+  list-style: none;
+  margin: 10px 0 0;
+}
+
+#todos > .todo-list-container .todo-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+#todos > .todo-list-container .todo-list .todo-item {
+  width: 100%;
+  background-color: white;
   color: black;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
-.button-wrapper {
-  margin-top: 10px;
+#todos > .todo-list-container .todo-list .button {
+  position: absolute;
+  right: 0;
 }
 
-#add-btn {
-  border-radius: 10pt;
+#todos > .todo-list-container .todo-list .button button {
+  width: 40px;
+  height: 50px;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
 }
 
-.completed {
+#todos > .todo-list-container .todo-list .button .completed {
+  background-color: #3ec282;
+}
+
+#todos > .todo-list-container .todo-list .button .trash {
+  background-color: #e72727;
+}
+
+#todos > .todo-list-container .todo-list .button button i {
+  pointer-events: none;
+}
+
+.editBtn {
+  background-color: rgb(70, 64, 239);
+}
+
+.fall {
+  opacity: 0;
+  transform: translateY(10rem) rotateZ(200deg);
+  transition: 0.5s;
+}
+
+.line_through {
   text-decoration: line-through;
-  color: gray;
+  opacity: 0.5;
+  transition: 0.2s;
 }
 
-.custom-cross-off-btn {
-  color: green;
-  border-radius: 10pt;
-}
-
-.custom-delete-btn {
-  color: red;
-  border-radius: 10pt;
-}
-
-.custom-edit-btn {
-  color: blue;
-  border-radius: 10pt;
+@media screen and (max-width: 600px) {
+  #todos {
+    width: 100%;
+  }
 }
