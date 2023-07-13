@@ -1,102 +1,89 @@
-/* Select all the necessary Elements */
-const input = document.querySelector(".todo_input");
-const MainTodoContainer = document.getElementById("todos");
-const addingButton = document.querySelector(".add-item");
+window.addEventListener("DOMContentLoaded", () => {
+  const todoList = [];
 
-addingButton.addEventListener("click", function (e) {
-  e.preventDefault();
+  const todoListElement = document.getElementById("todo-list");
+  const titleInput = document.getElementById("title");
+  const descriptionInput = document.getElementById("description");
+  const addButton = document.getElementById("add-btn");
 
-  if (input.value.trim()) {
-    let ulTag = document.createElement("ul");
-    ulTag.classList.add("todo-list-container");
+  addButton.addEventListener("click", () => {
+    const title = titleInput.value;
+    const description = descriptionInput.value;
 
-    let todoList = document.createElement("div");
-    todoList.classList.add("todo-list");
+    if (title && description) {
+      const newItem = {
+        title: title,
+        description: description,
+        completed: false,
+      };
 
-    let liTag = document.createElement("li");
-    liTag.innerText = input.value;
-    liTag.classList.add("todo-item");
+      todoList.push(newItem);
 
-    let buttonDiv = document.createElement("div");
-    buttonDiv.classList.add("button");
+      const li = document.createElement("li");
+      const textSpan = document.createElement("span");
+      textSpan.textContent = `${title}: ${description}`;
+      li.appendChild(textSpan);
 
-    let completeButton = document.createElement("button");
-    completeButton.classList.add("completed");
-    completeButton.innerHTML = '<i class="fas fa-check"></i>';
+      const editButton = document.createElement("button");
+      editButton.innerHTML = '<i class="fas fa-edit"></i>';
+      editButton.classList.add("custom-edit-btn");
+      li.appendChild(editButton);
 
-    let editBtn = document.createElement("button");
-    editBtn.innerHTML = '<i class="fas fa-edit"></i>';
-    editBtn.classList.add("editBtn");
-    editBtn.onclick = function () {
-      editWorking(liTag);
-    };
+      const crossOffButton = document.createElement("button");
+      crossOffButton.innerHTML = '<i class="fas fa-check"></i>';
+      crossOffButton.classList.add("custom-cross-off-btn");
+      li.appendChild(crossOffButton);
 
-    let trashButton = document.createElement("button");
-    trashButton.classList.add("trash");
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      deleteButton.classList.add("custom-delete-btn");
+      li.appendChild(deleteButton);
 
-    ulTag.appendChild(todoList);
-    todoList.appendChild(liTag);
-    todoList.appendChild(buttonDiv);
-    buttonDiv.appendChild(completeButton);
-    buttonDiv.appendChild(editBtn);
-    buttonDiv.appendChild(trashButton);
+      todoListElement.appendChild(li);
 
-    MainTodoContainer.appendChild(ulTag);
+      crossOffButton.addEventListener("click", () => {
+        textSpan.classList.toggle("completed");
+        newItem.completed = !newItem.completed;
+      });
 
-    input.value = "";
+      deleteButton.addEventListener("click", () => {
+        const index = todoList.indexOf(newItem);
+        if (index > -1) {
+          todoList.splice(index, 1);
+        }
+        li.remove();
+      });
 
-    todoList.addEventListener("click", function (e) {
-      let items = e.target;
-      if (items.classList[0] === "completed") {
-        let todo = items.parentElement;
-        let todo2 = todo.parentElement;
-        todo2.classList.toggle("line_through");
-      } else if (items.classList[0] === "trash") {
-        let todo = items.parentElement;
-        let todo2 = todo.parentElement;
-        todo2.classList.add("fall");
-        todo2.addEventListener("transitionend", function () {
-          let todo3 = todo2.parentElement;
-          todo3.remove();
-        });
-      }
-    });
-  } else if (input.value === "") {
-    alert("Please fill the input field");
-  }
-});
+      editButton.addEventListener("click", () => {
+        editButtonAction(textSpan, newItem);
+      });
 
-function editWorking(e) {
-  const editInput = document.createElement("input");
-  editInput.type = "text";
-  editInput.value = e.innerText;
-  editInput.classList.add("edit-input");
-
-  const saveButton = document.createElement("button");
-  saveButton.innerHTML = '<i class="fas fa-save"></i>';
-  saveButton.classList.add("saveBtn");
-
-  saveButton.addEventListener("click", function () {
-    e.innerText = editInput.value;
-  });
-
-  editInput.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-      e.innerText = editInput.value;
+      titleInput.value = "";
+      descriptionInput.value = "";
     }
   });
 
-  // Clear existing content of 'e' before appending the new elements
-  e.innerHTML = "";
-  e.appendChild(editInput);
-  e.appendChild(saveButton);
-}
+  function editButtonAction(element, item) {
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = element.textContent;
+    editInput.classList.add("edit-input");
 
-function deleteAllElements() {
-  let gettingUlTag = document.querySelectorAll(".todo-list-container");
-  for (let i = 0; i < gettingUlTag.length; i++) {
-    gettingUlTag[i].remove();
+    const saveButton = document.createElement("button");
+    saveButton.innerHTML = '<i class="fas fa-save"></i>';
+    saveButton.classList.add("saveBtn");
+
+    saveButton.addEventListener("click", () => {
+      const updatedText = editInput.value;
+      element.textContent = updatedText;
+      item.title = updatedText.split(": ")[0];
+      item.description = updatedText.split(": ")[1];
+      editInput.remove();
+      saveButton.remove();
+    });
+
+    element.innerHTML = "";
+    element.appendChild(editInput);
+    element.appendChild(saveButton);
   }
-  input.value = "";
-}
+});
