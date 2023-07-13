@@ -11,7 +11,8 @@ body {
 
 #add-btn {
   border-radius: 5px;
-  font-size: 20pt;
+  font-size: 15pt;
+  cursor: pointer;
 }
 
 .completed {
@@ -22,22 +23,26 @@ body {
   color: green;
   border-radius: 5px;
   font-size: 20pt;
+  cursor: pointer;
 }
 
 .custom-delete-btn {
   color: red;
   border-radius: 5px;
   font-size: 20pt;
+  cursor: pointer;
 }
 
 .custom-edit-btn {
   color: blue;
   border-radius: 5px;
   font-size: 20pt;
+  cursor: pointer;
 }
 
 .custom-save-btn {
   color: darkblue;
   border-radius: 5px;
   font-size: 20pt;
+  cursor: pointer;
 }
