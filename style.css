@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to right, orange, yellow);
+  background: linear-gradient(to right, lightgreen, lightblue);
   color: black;
   font-size: 25pt;
   text-align: center;
@@ -10,7 +10,7 @@ body {
 }
 
 #add-btn {
-  border-radius: 10pt;
+  border-radius: 5px;
   font-size: 20pt;
 }
 
@@ -20,24 +20,24 @@ body {
 
 .custom-cross-off-btn {
   color: green;
-  border-radius: 10pt;
+  border-radius: 5px;
   font-size: 20pt;
 }
 
 .custom-delete-btn {
   color: red;
-  border-radius: 10pt;
+  border-radius: 5px;
   font-size: 20pt;
 }
 
 .custom-edit-btn {
   color: blue;
-  border-radius: 10pt;
+  border-radius: 5px;
   font-size: 20pt;
 }
 
 .custom-save-btn {
-  color: orange;
-  border-radius: 10pt;
+  color: darkblue;
+  border-radius: 5px;
   font-size: 20pt;
 }
