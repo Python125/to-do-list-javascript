@@ -43,7 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       crossOffButton.addEventListener("click", () => {
         textSpan.classList.toggle("completed");
-        newItem.completed = !newItem.completed;
+        newItem.completed = true;
       });
 
       deleteButton.addEventListener("click", () => {
@@ -55,35 +55,41 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       editButton.addEventListener("click", () => {
-        editButtonAction(textSpan, newItem);
+        const newTitleInput = document.createElement("input");
+        newTitleInput.type = "text";
+        newTitleInput.value = newItem.title;
+
+        const newDescriptionInput = document.createElement("input");
+        newDescriptionInput.type = "text";
+        newDescriptionInput.value = newItem.description;
+
+        const saveButton = document.createElement("button");
+        saveButton.innerHTML = '<i class="fas fa-save"></i>';
+        saveButton.classList.add("custom-save-btn");
+        li.appendChild(saveButton);
+
+        li.replaceChild(newTitleInput, textSpan);
+        li.replaceChild(newDescriptionInput, editButton);
+        li.appendChild(saveButton);
+
+        saveButton.addEventListener("click", () => {
+          const newTitle = newTitleInput.value;
+          const newDescription = newDescriptionInput.value;
+
+          if (newTitle && newDescription) {
+            newItem.title = newTitle;
+            newItem.description = newDescription;
+            textSpan.textContent = `${newTitle}: ${newDescription}`;
+          }
+
+          li.replaceChild(textSpan, newTitleInput);
+          li.replaceChild(editButton, newDescriptionInput);
+          li.removeChild(saveButton);
+        });
       });
 
       titleInput.value = "";
       descriptionInput.value = "";
     }
   });
-
-  function editButtonAction(element, item) {
-    const editInput = document.createElement("input");
-    editInput.type = "text";
-    editInput.value = element.textContent;
-    editInput.classList.add("edit-input");
-
-    const saveButton = document.createElement("button");
-    saveButton.innerHTML = '<i class="fas fa-save"></i>';
-    saveButton.classList.add("saveBtn");
-
-    saveButton.addEventListener("click", () => {
-      const updatedText = editInput.value;
-      element.textContent = updatedText;
-      item.title = updatedText.split(": ")[0];
-      item.description = updatedText.split(": ")[1];
-      editInput.remove();
-      saveButton.remove();
-    });
-
-    element.innerHTML = "";
-    element.appendChild(editInput);
-    element.appendChild(saveButton);
-  }
 });
